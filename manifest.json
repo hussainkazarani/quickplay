@@ -4,7 +4,7 @@
     "description" : "A youtube extension extending the capabilities of speed-up",
     "version" : "1.0",
     "action" : {
-        "popup" : "popup/popup.html"
+        "default_popup" : "popup/popup.html"
     },
     "icons" : {
         "16" : "icons/icon-16.png",
@@ -17,6 +17,6 @@
         "type" : "module"
     },
     "permission" : [
-
+        "storage"
     ]
 }

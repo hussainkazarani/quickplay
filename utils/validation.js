@@ -2,13 +2,34 @@ export const playbackInputElement = document.querySelector(".default-speed");
 const errorElement = document.querySelector(".error-message");
 const controlsElement = document.querySelector(".controls");
 const allSpeedButtons = controlsElement.querySelectorAll(".control-item");
+const allVisibleSpeedButtons = () => controlsElement.querySelectorAll(".control-item.visible"); // prettier-ignore
 export const speedInputElement = document.querySelector(".custom-speed");
 
 export const SpeedValidator = {
   validateSpeed(speedFromUser) {
-    const floatSpeed = parseFloat(speedFromUser).toFixed(2);
-    const isValid = !isNaN(floatSpeed) && floatSpeed >= 0.5 && floatSpeed <= 5;
+    const floatSpeed = parseFloat(speedFromUser);
+    const isValid = !isNaN(floatSpeed) && floatSpeed >= 0.50 && floatSpeed <= 5.00; // prettier-ignore
     return isValid ? floatSpeed : false;
+  },
+  validateDuration(durationFromUser) {
+    const floatSpeed = parseFloat(durationFromUser);
+    const isValid = !isNaN(floatSpeed) && floatSpeed >= 0.50 && floatSpeed <= 5.00; // prettier-ignore
+    return isValid ? floatSpeed.toFixed(2) : false;
+  },
+  truncateSpeed() {
+    playbackInputElement.addEventListener("input", (event) => {
+      const value = event.target.value;
+      if (!/^\d{0,2}(\.\d{0,2})?$/.test(value)) {
+        event.target.value = value.slice(0, -1);
+      }
+    });
+
+    speedInputElement.addEventListener("input", (event) => {
+      const value = event.target.value;
+      if (!/^\d{0,2}(\.\d{0,2})?$/.test(value)) {
+        event.target.value = value.slice(0, -1);
+      }
+    });
   },
 };
 
@@ -20,7 +41,7 @@ export const UIManager = {
       speedInputElement.classList.remove("error");
       errorElement.style.display = "none";
     }, 3000);
-    errorType == "wrong-value" ? "Speed must be between 0 and 5" : "Speed already exists"; // prettier-ignore
+    errorElement.innerHTML = errorType == "wrong-value" ? "Speed must be between 0 and 5" : "Speed already exists"; // prettier-ignore
   },
 
   showSpeedSuccess(speedInputElement) {
@@ -46,17 +67,15 @@ export const UIManager = {
 
   updateSpeeds(speeds) {
     //remove all
-    allSpeedButtons.forEach((button) => button.remove());
+    allVisibleSpeedButtons().forEach((button) => button.remove());
 
     //create and insert again
     speeds.forEach((speed, index) => {
       const newButton = document.createElement("button");
       newButton.className = "control-item";
-      newButton.innerHTML = `${speed}x`;
+      newButton.innerHTML = `${parseFloat(speed).toFixed(2)}x`;
       controlsElement.insertBefore(newButton, speedInputElement);
-      setTimeout(() => {
-        newButton.classList.add("visible");
-      }, index * 200);
+      newButton.classList.add("visible");
     });
   },
 };

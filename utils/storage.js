@@ -1,5 +1,5 @@
 const DEFAULT_SPEEDS = [0.75, 1.00, 1.25, 1.75, 2.00]; // prettier-ignore
-const DEFAULT_PLAYBACK_SPEED = 1.43 // prettier-ignore
+const DEFAULT_PLAYBACK_SPEED = "1.00" // prettier-ignore
 
 export const StorageManager = {
   async initialize() {

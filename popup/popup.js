@@ -73,7 +73,12 @@ function playbackInputEventListener() {
         UIManager.updateSpeeds(speeds);
         controlItemListener();
       }
+      chrome.runtime.sendMessage({
+        type: "PLAYBACK_SPEED_CHANGED",
+        speed: playbackValueNumber,
+      });
       playbackInputElement.placeholder = `${playbackValue}x`;
+      // PlayerOptions.spedUpDurationUI();
       UIManager.showPlaybackSuccess();
     }
   });

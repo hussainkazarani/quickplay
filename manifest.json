@@ -10,8 +10,13 @@
     "service_worker": "background/background.js",
     "type": "module"
   },
-  "permissions": ["storage"],
-  "host_permissions": ["*://*.youtube.com/*"],
+  "permissions": ["storage", "tabs", "scripting", "activeTab"],
+  "host_permissions": [
+    "*://www.youtube.com/*",
+    "http://www.youtube.com/*",
+    "https://www.youtube.com/*",
+    "https://*/*"
+  ],
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",
@@ -27,7 +32,8 @@
       "matches": ["*://*.youtube.com/*"],
       "js": ["content/player.js"],
       "css": ["content/player.css"],
-      "type": "module"
+      "type": "module",
+      "run_at": "document_start"
     }
   ]
 }

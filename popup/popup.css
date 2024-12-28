@@ -41,6 +41,7 @@ h2 {
   opacity: 0;
   transform: translateY(10px);
   min-width: 3rem;
+  max-width: 6rem;
 }
 
 .control-item:hover {
@@ -63,7 +64,7 @@ h2 {
   transition: background 0.2s ease;
   outline: none;
   min-width: 6rem;
-  flex: 3;
+  flex: 4;
   max-width: 11rem;
   appearance: none; /* Standard property */
   -webkit-appearance: none; /* For WebKit browsers */

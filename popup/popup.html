@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickPlay</title>
+    <link href="popup.css" rel="stylesheet" />
+    <script type="module" src="popup.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- SPEED CONTROLS -->
+      <h2>Speed Control</h2>
+      <div class="controls">
+        <input type="number" class="custom-speed" placeholder="Enter a speed" />
+      </div>
+      <div class="error-message"></div>
+      <!-- OPTIONS -->
+      <div class="options">
+        <div class="option-item">
+          <span>Set default speed</span>
+          <input type="text" class="default-speed" placeholder="" value="" />
+        </div>
+        <div class="option-item">
+          <span>Synchronize for all open YouTube tabs</span>
+          <input type="checkbox" id="check1" />
+          <label for="check1" class="toggle"></label>
+        </div>
+        <div class="option-item">
+          <span>Show sped-up Duration in Player</span>
+          <input type="checkbox" id="check2" />
+          <label for="check2" class="toggle"></label>
+        </div>
+      </div>
+
+      <!-- SHORTCUTS -->
+      <div class="shortcuts">
+        <h2>Keyboard Shortcuts</h2>
+        <div class="shortcut-item">
+          <span>Speed up for all videos</span>
+          <button class="record-button">Record Shortcut</button>
+        </div>
+        <div class="shortcut-item">
+          <span>Speed down for all videos</span>
+          <button class="record-button">Record Shortcut</button>
+        </div>
+        <div class="shortcut-item">
+          <span>Speed up for current videos</span>
+          <button class="record-button">Record Shortcut</button>
+        </div>
+        <div class="shortcut-item">
+          <span>Speed up for current videos</span>
+          <button class="record-button">Record Shortcut</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
